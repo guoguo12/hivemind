@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+TIME=`date +%s`
+python census.py > ../web/data/$TIME.json
+
+cd ../web/data/
+git pull
+cp $TIME.json latest.json
+git add .
+git commit -m "Auto-add latest data"
+git push
