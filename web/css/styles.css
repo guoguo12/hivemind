@@ -1,3 +1,8 @@
+/**
+ * STYLES.CSS -- Hivemind
+ * Allen Guo <allenguo@berkeley.edu>
+ */
+
 html, body {
     background-color: #1A1A1A;
     color: white;
@@ -30,11 +35,11 @@ th::after {
 }
 
 th.headerSortDown::after {
-    content: url('../images/asc.gif');;
+    content: url('../images/desc.gif');
 }
 
 th.headerSortUp::after {
-    content: url('../images/desc.gif');
+    content: url('../images/asc.gif');;
 }
 
 #top {
