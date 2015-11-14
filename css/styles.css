@@ -1,0 +1,73 @@
+/**
+ * STYLES.CSS -- Hivemind
+ * Allen Guo <allenguo@berkeley.edu>
+ */
+
+html, body {
+    background-color: #F9F9F9;
+    color: black;
+    font-size: 18px
+}
+
+a, a:hover {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    margin-top: 15px;
+}
+
+th {
+    cursor: pointer;
+}
+
+th::after {
+    content: url('../images/bg.gif');;
+}
+
+th.headerSortDown::after {
+    content: url('../images/desc.gif');
+}
+
+th.headerSortUp::after {
+    content: url('../images/asc.gif');;
+}
+
+#top {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: #050505;
+    color: white;
+    line-height: 80px;
+}
+
+#top a {
+    color: white;
+    float: right;
+}
+
+#title {
+    font-size: 200%;
+}
+
+#main {
+    margin-top: 100px;
+}
+
+.box {
+    border: 1px solid #AAA;
+    padding: 10px;
+    color: black;
+    margin: 5px;
+}
