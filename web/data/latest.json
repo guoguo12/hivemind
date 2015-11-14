@@ -1,0 +1,415 @@
+{
+    "data": {
+        "": {},
+        "hive1": {
+            "load_avgs": [
+                0.05,
+                0.2,
+                0.28
+            ],
+            "uptime": 27889.98,
+            "users": [
+                "cs61c-aiw",
+                "cs61c-app",
+                "cs61as-bz",
+                "cs61c-beo",
+                "cs61c-bcf",
+                "cs61c-alp",
+                "cs161-do"
+            ]
+        },
+        "hive10": {
+            "load_avgs": [
+                0.38,
+                0.67,
+                1.63
+            ],
+            "uptime": 206936.11,
+            "users": [
+                "cs61c-axw",
+                "cs161-gx",
+                "cs61c-amh",
+                "cs61c-ain",
+                "cs188-hw"
+            ]
+        },
+        "hive11": {
+            "load_avgs": [
+                0.06,
+                0.1,
+                0.16
+            ],
+            "uptime": 883050.78,
+            "users": [
+                "cs61c-aov",
+                "cs61c-adw",
+                "cs161-gv"
+            ]
+        },
+        "hive12": {
+            "load_avgs": [
+                0.06,
+                0.05,
+                0.05
+            ],
+            "uptime": 23506.04,
+            "users": [
+                "cs61c-adg",
+                "cs161-gm"
+            ]
+        },
+        "hive13": {
+            "load_avgs": [
+                0.01,
+                0.04,
+                0.05
+            ],
+            "uptime": 20860.23,
+            "users": [
+                "cs61as-ew"
+            ]
+        },
+        "hive14": {
+            "load_avgs": [
+                0.03,
+                0.05,
+                0.05
+            ],
+            "uptime": 1495483.68,
+            "users": [
+                "cs61c-ajm",
+                "cs61c-axd",
+                "cs61c-aeh",
+                "cs61c-apr"
+            ]
+        },
+        "hive15": {
+            "load_avgs": [
+                0.21,
+                0.18,
+                0.14
+            ],
+            "uptime": 648637.45,
+            "users": [
+                "cs186-hd",
+                "cs61c-axt",
+                "cs61c-azz",
+                "cs61c-aln"
+            ]
+        },
+        "hive16": {
+            "load_avgs": [
+                0.18,
+                0.08,
+                0.06
+            ],
+            "uptime": 1399959.21,
+            "users": [
+                "cs61c-avf",
+                "cs61c-axh"
+            ]
+        },
+        "hive17": {
+            "load_avgs": [
+                0.0,
+                0.07,
+                0.16
+            ],
+            "uptime": 699802.09,
+            "users": [
+                "cs61c-aed",
+                "cs61c-bbw",
+                "cs61c-bfi"
+            ]
+        },
+        "hive18": {
+            "load_avgs": [
+                0.01,
+                0.06,
+                0.12
+            ],
+            "uptime": 1057242.2,
+            "users": [
+                "cs61c-aet",
+                "cs61c-apv",
+                "cs61c-axi",
+                "cs61c-afu",
+                "cs61c-agp",
+                "cs61c-azz",
+                "cs61c-ayt",
+                "cs61c-bcc",
+                "cs61c-acu"
+            ]
+        },
+        "hive19": {
+            "load_avgs": [
+                0.02,
+                0.07,
+                0.08
+            ],
+            "uptime": 468454.08,
+            "users": [
+                "cs61c-ago",
+                "cs161-fy",
+                "cs61c-arr",
+                "cs61as-cz",
+                "ee126-cr"
+            ]
+        },
+        "hive2": {
+            "load_avgs": [
+                0.23,
+                0.37,
+                0.43
+            ],
+            "uptime": 33608.72,
+            "users": [
+                "cs61c-afl",
+                "cs61c-ank",
+                "cs61c-api",
+                "cs61c-all"
+            ]
+        },
+        "hive20": {
+            "load_avgs": [
+                0.1,
+                0.1,
+                0.13
+            ],
+            "uptime": 96133.17,
+            "users": [
+                "cs161-ch"
+            ]
+        },
+        "hive21": {
+            "load_avgs": [
+                0.11,
+                0.19,
+                0.25
+            ],
+            "uptime": 725056.12,
+            "users": [
+                "cs61c-acq",
+                "cs61c-afh",
+                "cs61c-aou"
+            ]
+        },
+        "hive22": {
+            "load_avgs": [
+                0.09,
+                0.16,
+                0.21
+            ],
+            "uptime": 627474.32,
+            "users": [
+                "cs162-mv",
+                "cs61a-cak",
+                "cs61b-gr",
+                "cs61c-aeo",
+                "cs186-ob",
+                "cs61c-aqw"
+            ]
+        },
+        "hive23": {
+            "load_avgs": [
+                0.13,
+                0.38,
+                0.24
+            ],
+            "uptime": 866152.39,
+            "users": [
+                "cs189-my",
+                "cs194-bv",
+                "cs61c-aau",
+                "cs61b-fy",
+                "cs61b-gr"
+            ]
+        },
+        "hive24": {
+            "load_avgs": [
+                0.15,
+                0.09,
+                0.12
+            ],
+            "uptime": 872542.99,
+            "users": [
+                "cs61b-gv",
+                "cs61c-ahq",
+                "cs61c-aoa"
+            ]
+        },
+        "hive25": {
+            "load_avgs": [
+                0.0,
+                0.04,
+                0.11
+            ],
+            "uptime": 346202.71,
+            "users": [
+                ""
+            ]
+        },
+        "hive26": {
+            "load_avgs": [
+                0.01,
+                0.02,
+                0.05
+            ],
+            "uptime": 123216.83,
+            "users": [
+                "cs61c-afl"
+            ]
+        },
+        "hive27": {},
+        "hive28": {
+            "load_avgs": [
+                0.06,
+                0.07,
+                0.05
+            ],
+            "uptime": 33579.07,
+            "users": [
+                ""
+            ]
+        },
+        "hive29": {},
+        "hive3": {
+            "load_avgs": [
+                0.92,
+                0.58,
+                0.46
+            ],
+            "uptime": 123216.56,
+            "users": [
+                "cs61c-avl",
+                "cs61c-ayc",
+                "cs61c-ahc",
+                "cs61c-auu"
+            ]
+        },
+        "hive30": {
+            "load_avgs": [
+                0.25,
+                0.21,
+                0.28
+            ],
+            "uptime": 89194.08,
+            "users": [
+                "cs61b-ij",
+                "cs61c-bfv",
+                "cs61c-afs",
+                "cs61c-anj"
+            ]
+        },
+        "hive4": {
+            "load_avgs": [
+                12.88,
+                12.81,
+                12.84
+            ],
+            "uptime": 900204.14,
+            "users": [
+                "cs61c-aax",
+                "cs161-an",
+                "cs61c-ahi",
+                "ee20n-cq"
+            ]
+        },
+        "hive5": {
+            "load_avgs": [
+                0.12,
+                0.08,
+                0.12
+            ],
+            "uptime": 822270.61,
+            "users": [
+                "cs186-jr",
+                "cs198-ga",
+                "cs61c-rae",
+                "cs61c-agc"
+            ]
+        },
+        "hive6": {
+            "load_avgs": [
+                0.0,
+                0.09,
+                0.65
+            ],
+            "uptime": 389472.64,
+            "users": [
+                "cs61c-atc",
+                "cs61c-akh",
+                "cs61c-aor",
+                "cs61c-abl"
+            ]
+        },
+        "hive7": {
+            "load_avgs": [
+                0.27,
+                0.27,
+                0.17
+            ],
+            "uptime": 52124.45,
+            "users": [
+                "cs186-dr",
+                "cs9e-1bm"
+            ]
+        },
+        "hive8": {
+            "load_avgs": [
+                0.18,
+                0.12,
+                0.13
+            ],
+            "uptime": 587434.8,
+            "users": [
+                "cs61c-aba",
+                "cs61c-bdq",
+                "cs61c-beh"
+            ]
+        },
+        "hive9": {
+            "load_avgs": [
+                0.03,
+                0.04,
+                0.05
+            ],
+            "uptime": 396965.86,
+            "users": [
+                "cs61c-bec"
+            ]
+        }
+    },
+    "elapsed": {
+        "hive1": 0.5573339462280273,
+        "hive10": 0.5522170066833496,
+        "hive11": 0.6540570259094238,
+        "hive12": 0.7737751007080078,
+        "hive13": 0.680243968963623,
+        "hive14": 0.6646649837493896,
+        "hive15": 0.5592808723449707,
+        "hive16": 0.7154369354248047,
+        "hive17": 0.7386529445648193,
+        "hive18": 0.6298439502716064,
+        "hive19": 0.6821510791778564,
+        "hive2": 0.9912080764770508,
+        "hive20": 0.7479398250579834,
+        "hive21": 0.6009881496429443,
+        "hive22": 1.1042680740356445,
+        "hive23": 0.7185020446777344,
+        "hive24": 0.817349910736084,
+        "hive25": 0.6576709747314453,
+        "hive26": 0.6936709880828857,
+        "hive28": 1.5423099994659424,
+        "hive3": 0.7217159271240234,
+        "hive30": 1.7083990573883057,
+        "hive4": 0.8741297721862793,
+        "hive5": 0.7272560596466064,
+        "hive6": 0.586137056350708,
+        "hive7": 0.6076140403747559,
+        "hive8": 0.6890850067138672,
+        "hive9": 0.6249349117279053
+    },
+    "time_begin": 1447486759.422843,
+    "time_elapsed": 63.70560908317566
+}
