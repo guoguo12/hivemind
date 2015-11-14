@@ -45,9 +45,12 @@ if __name__ == '__main__':
     results = {'time_begin': time.time(), 'elapsed': {}, 'data': {}}
     
     for server in read_servers():
-        server_data, server_elapsed = poll(server)
-        results['data'][server] = server_data
-        results['elapsed'][server] = server_elapsed
+        try:
+            server_data, server_elapsed = poll(server)
+            results['data'][server] = server_data
+            results['elapsed'][server] = server_elapsed
+        # except:
+            # results['data'][server] = {};
 
     results['time_elapsed'] = time.time() - results['time_begin']
     print json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))
