@@ -1,0 +1,36 @@
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 0.881445s
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 0.547394s
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 0.544565s
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 0.567766s
+INFO:root:Starting poll of hive22
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive22 successfully in 1.694971s
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 0.947193s
+INFO:root:Starting poll of hive22
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive22 successfully in 1.297962s
+INFO:root:Starting poll of hive2
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive2 successfully in 1.521181s
+INFO:root:Starting poll of hive22
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_6.6.1p1)
+INFO:paramiko.transport:Authentication (publickey) successful!
+INFO:root:Finished poll of hive22 successfully in 0.755229s
