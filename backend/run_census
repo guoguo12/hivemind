@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 TIME=`date +%s`
-python census.py > ../web/data/$TIME.json
+python census.py > ../data/$TIME.json
 
-cd ../web/data/
+cd ../data/
 git pull
 cp $TIME.json latest.json
 git add .
