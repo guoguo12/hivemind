@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 TIME=`date +%s`
-python census.py > ../data/$TIME.json
+python census.py > ../data/historical/$TIME.json
 
 cd ../data/
 git pull
-cp $TIME.json latest.json
+cp historical/$TIME.json latest.json
 git add .
 git commit -m "Auto-add latest data"
-git push
+git push origin gh-pages

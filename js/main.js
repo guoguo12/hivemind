@@ -20,7 +20,7 @@ function updateLastUpdated(lastUpdated) {
 
 function update() {
   $.getJSON('data/latest.json', function(data) {
-    console.log(data);
+    $('#data-body').html('')
 
     var lastUpdate = moment.unix(data.time_begin + data.time_elapsed);
     updateLastUpdated(lastUpdate);
@@ -32,7 +32,6 @@ function update() {
       }
 
       var serverData = data.data[server];
-      console.log(serverData)
       if (Object.keys(serverData).length === 0) {
         var items = [server,
                      '&mdash;',
@@ -44,17 +43,21 @@ function update() {
                      '<span class="hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(serverData.users.length) + '</span>',
                      serverData.load_avgs[1],
                      serverData.load_avgs[2],
-                     '<span class="hint--right" data-hint="' + toHumanDuration(serverData.uptime) + '">' + serverData.uptime + ' s</span>'];
+                     toHumanDuration(serverData.uptime)];
       }
       var html = '<tr><td>' + items.join('</td><td>') + '</td></tr>';
       $('#data-body').append(html);
     });
 
-    $('table').tablesorter({sortList: [[1,0]], headers: {0: { sorter:'servers'}}});
+    $('table').tablesorter({sortList: [[1,0]], headers: {0: { sorter: 'servers'},
+                                                         1: { sorter: 'users'  },
+                                                         2: { sorter: 'loads'  },
+                                                         3: { sorter: 'loads'  },
+                                                         4: { sorter: 'uptimes'}}});
   });
 }
 
-function addServerNameParser() {
+function configParsers() {
   $.tablesorter.addParser({ 
     id: 'servers', 
     is: function(s) { 
@@ -67,12 +70,54 @@ function addServerNameParser() {
       return s;
     },
     type: 'text'
-  }); 
+  });
+  $.tablesorter.addParser({ 
+    id: 'users', 
+    is: function(s) { 
+      return false; 
+    },
+    format: function(s) { 
+      var m = s.match(/(\d+) Users?/i);
+      if (m) {
+        return parseInt(m[1]);
+      }
+      return 1000;
+    },
+    type: 'numeric'
+  });  
+  $.tablesorter.addParser({ 
+    id: 'loads', 
+    is: function(s) { 
+      return false; 
+    },
+    format: function(s) { 
+      if (s.indexOf('—') !== -1) {
+        return 1000;
+      }
+      return parseFloat(s);
+    },
+    type: 'numeric'
+  });
+  $.tablesorter.addParser({ 
+    id: 'uptimes', 
+    is: function(s) { 
+      return false; 
+    },
+    format: function(s) {
+      if (s.indexOf('—') !== -1) {
+        return Infinity;
+      }
+      var chunks = s.split(' ');
+      return moment.duration(parseInt(chunks[0] === 'a' ? 1 : chunks[0]), chunks[1]).asMilliseconds();
+    },
+    type: 'numeric'
+  });   
 }
 
 function main() {
-  addServerNameParser();
+  configParsers();
   update();
+//  setTimeout(function() { location.reload(); }, 1000 * 60); // Refresh every minute
 }
 
 $(main);

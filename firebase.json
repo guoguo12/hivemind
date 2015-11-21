@@ -1,0 +1,10 @@
+{
+  "firebase": "hivemind-data",
+  "public": "data",
+  "ignore": [
+    "firebase.json",
+    "**/historical/**",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -6,7 +6,12 @@
 html, body {
     background-color: #F9F9F9;
     color: black;
-    font-size: 18px
+    font-size: 18px;
+    min-width: 600px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;     
 }
 
 a, a:hover {
@@ -50,6 +55,7 @@ th.headerSortUp::after {
     background-color: #050505;
     color: white;
     line-height: 80px;
+    min-width: 600px;
 }
 
 #top a {
@@ -63,6 +69,12 @@ th.headerSortUp::after {
 
 #main {
     margin-top: 100px;
+}
+
+#footer {
+    font-size: 80%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .box {
