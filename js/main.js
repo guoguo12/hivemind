@@ -1,6 +1,8 @@
 // MAIN.JS -- Hivemind
 // Allen Guo <allenguo@berkeley.edu>
 
+var DATA_URL = "https://hivemind-data.firebaseapp.com/latest.json";
+
 function toHumanDuration(seconds) {
   return moment.duration(seconds, 'seconds').humanize();
 }
@@ -19,7 +21,7 @@ function updateLastUpdated(lastUpdated) {
 }
 
 function update() {
-  $.getJSON('data/latest.json', function(data) {
+  $.getJSON(DATA_URL, function(data) {
     $('#data-body').html('')
 
     var lastUpdate = moment.unix(data.time_begin + data.time_elapsed);
