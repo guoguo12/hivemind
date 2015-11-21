@@ -13,5 +13,11 @@
       "key": "Access-Control-Allow-Origin",
       "value": "*"
     }]
+  }, {
+    "source": "**/*.json",
+    "headers": [{
+      "key": "Cache-Control",
+      "value": "max-age=0"
+    }]
   }]
 }
