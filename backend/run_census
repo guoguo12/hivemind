@@ -3,9 +3,6 @@
 TIME=`date +%s`
 python census.py > ../data/historical/$TIME.json
 
-cd ../data/
-git pull
-cp historical/$TIME.json latest.json
-git add .
-git commit -m "Auto-add latest data"
-git push origin gh-pages
+cp ../data/historical/$TIME.json ../data/latest.json
+firebase deploy
+
