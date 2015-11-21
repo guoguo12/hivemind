@@ -7,7 +7,9 @@ Send feedback and feature requests to guoguo12@gmail.com.
 ## How Does It Work?
 *Note: All files are on the `gh-pages` branch.*
 
-Every 10 minutes, `backend/census.py` is executed. It connects to each server in `server.txt` via SSH and collects information by running three commands (`cat /proc/{uptime,loadavg} && who -q`). The results are combined into one big JSON file (`data/latest.json`), which is then uploaded using Git.
+Every 10 minutes, `backend/census.py` is executed. It connects to each server in `server.txt` via SSH and collects information by running three commands (`cat /proc/{uptime,loadavg} && who -q`). The results are combined into one big JSON file (`data/latest.json`), which is then uploaded to [Firebase](https://www.firebase.com/hosting.html).
+
+You can view the most recently generated JSON file here: [https://hivemind-data.firebaseapp.com/latest.json](https://hivemind-data.firebaseapp.com/latest.json).
 
 ## How to Contribute
 
