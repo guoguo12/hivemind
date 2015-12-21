@@ -10,7 +10,7 @@ import pysftp
 
 SERVER_LIST = 'servers.txt'
 HOST_SUFFIX = '.cs.berkeley.edu'
-LOGIN_USERNAME = 'cs61c-bbd'
+LOGIN_USERNAME = 'cs199-auk'
 LOGIN_KEY_PATH = 'private/id_rsa'
 
 LOG_PATH = 'output.log'
