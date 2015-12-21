@@ -4,6 +4,7 @@
 
 import json
 import logging
+import multiprocessing
 import time
 
 import pysftp
@@ -18,6 +19,8 @@ LOG_LEVEL = logging.INFO
 
 EXEC_CMD = 'cat /proc/{uptime,loadavg} && who -q'
 EXPECTED_OUTPUT_LINES = 4
+
+PROCESS_COUNT = 8
 
 
 def read_servers(list_path=SERVER_LIST):
@@ -60,13 +63,28 @@ if __name__ == '__main__':
     logging.basicConfig(filename=LOG_PATH, level=LOG_LEVEL)
     results = {'time_begin': time.time(), 'elapsed': {}, 'data': {}}
 
-    for server in read_servers():
+    def task(server):
         try:
-            server_data, server_elapsed = poll(server)
-            results['data'][server] = server_data
-            results['elapsed'][server] = server_elapsed
+            return server, poll(server)
         except:
-            results['data'][server] = {}
+            return server, None
+
+    def callback(callback_results):
+        for server, result in callback_results:
+            if result != None:
+                server_data, server_elapsed = result
+                results['data'][server] = server_data
+                results['elapsed'][server] = server_elapsed
+            else:
+                results['data'][server] = {}
+
+    servers = read_servers()
+    pool = multiprocessing.Pool(PROCESS_COUNT)
+
+    pool.map_async(task, servers, callback=callback)
+    pool.close()
+    pool.join()
 
     results['time_elapsed'] = time.time() - results['time_begin']
     print json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))
+
