@@ -17,8 +17,8 @@ LOGIN_KEY_PATH = 'private/id_rsa'
 LOG_PATH = 'output.log'
 LOG_LEVEL = logging.INFO
 
-EXEC_CMD = 'cat /proc/{uptime,loadavg} && who -q'
-EXPECTED_OUTPUT_LINES = 4
+EXEC_CMD = 'cat /proc/{uptime,loadavg} && who -q && cat /proc/cpuinfo | grep "model name" | wc -l'
+EXPECTED_OUTPUT_LINES = 5
 
 PROCESS_COUNT = 8
 
@@ -46,8 +46,10 @@ def poll(host):
             raise ValueError('Server output has wrong number of lines: %r'
                              % result)
         result = map(lambda s: s.rstrip('\n'), result)
+
         uptime = float(result[0].split(' ')[0])  # in seconds
-        loadavgs = map(float, result[1].split(' ')[:3])  # over last 15 minutes
+        num_cpus = float(result[4])
+        loadavgs = [float(avg) / num_cpus for avg in result[1].split(' ')[:3]]  # over last 15 minutes
         users = [] if not result[2] else list(set(result[2].split(' ')))
         data = {'uptime': uptime,
                 'load_avgs': loadavgs,
