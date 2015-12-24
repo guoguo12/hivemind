@@ -1,7 +1,8 @@
 // MAIN.JS -- Hivemind
 // Allen Guo <allenguo@berkeley.edu>
 
-var DATA_URL = "http://hivemind-data.firebaseapp.com/latest.json";
+var DATA_URL = "test.json";
+// var DATA_URL = "http://hivemind-data.firebaseapp.com/latest.json";
 
 var RATING_TEXTS = {
   1: "Low",
@@ -20,7 +21,7 @@ function toRating(load, userCount) {
   } else {
     var rating = 4;
   }
-  return '<span class="rating rating-' + rating + '">&bull; ' + RATING_TEXTS[rating] + '</span>';
+  return '<span class="rating rating-' + rating + '">&#9679; ' + RATING_TEXTS[rating] + '</span>';
 }
 
 function toHumanDuration(seconds) {
@@ -62,8 +63,12 @@ function update() {
                      '&mdash;'];
       } else {
         var userCount = serverData.users.length;
-        var load = parseFloat(serverData.load_avgs[2] * 100).toFixed(2) + '%';
-        if (userCount != 0) {
+        var load = serverData.load_avgs[1] * 100;
+        var loadString = parseFloat(load).toFixed(2) + '%';
+        if (userCount > 8) {
+          var userList = serverData.users.slice(0, 8).join(', ') + ', and ' + (userCount - 8) + ' more';
+          var userCountHtml = '<span class="hint--bottom" data-hint="' + userList + '">' + toHumanUserCount(userCount) + '</span>';
+        } else if (userCount > 0) {
           var userCountHtml = '<span class="hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(userCount) + '</span>';
         } else {
           var userCountHtml = toHumanUserCount(userCount);
@@ -71,7 +76,7 @@ function update() {
         var items = [server,
                      toRating(load, userCount),
                      userCountHtml,
-                     load,
+                     loadString,
                      toHumanDuration(serverData.uptime)];
       }
       var html = '<tr><td>' + items.join('</td><td>') + '</td></tr>';

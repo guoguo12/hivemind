@@ -80,11 +80,21 @@ th.headerSortUp::after {
     padding-bottom: 2rem;
 }
 
+.hidden {
+    display: none;
+}
+
 .box {
+    margin-bottom: 2rem;
     border-left: 0.6rem solid black;
     padding-left: 1.5rem;
     color: black;
     font-size: 1.15em;
+}
+
+.box.warning {
+    border-left-color: #D32F2F;
+    color: #D32F2F;
 }
 
 .box p {
