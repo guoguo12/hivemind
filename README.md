@@ -3,7 +3,6 @@
 **Hivemind** provides up-to-date stats on the Berkeley EECS instructional computers.
 
 ## How Does It Work?
-*Note: All files are on the `gh-pages` branch.*
 
 Every 10 minutes, `backend/census.py` is executed. It connects to each server in `server.txt` via SSH and collects information. The results from all of the servers are combined into a single JSON file (`data/latest.json`), which is then uploaded to [Firebase Hosting](https://www.firebase.com/hosting.html).
 
@@ -13,7 +12,7 @@ You can view the most recently generated JSON file here: [https://hivemind-data.
 
 Want to host the website locally? Clone this repo, switch to the `gh-pages` branch, and start a web server in the project root directory.
 
-The backend (i.e. the script that grabs data from the servers) is a little more complciated to set up:
+The backend (i.e. the script that grabs data from the servers) is a little harder to set up:
 
 1. Navigate to `backend/`.
 2. Make a directory called `private/`.
