@@ -6,13 +6,13 @@
 html, body {
     background-color: #F9F9F9;
     color: black;
-    font-size: 18px;
+    font-size: 62.5%;
     min-width: 600px;
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;     
-    font-family: "Open Sans", sans-serif;
+    font-family: "Helvetica", "Open Sans", sans-serif;
 }
 
 a, a:hover {
@@ -24,12 +24,12 @@ a {
     font-weight: bold;
 }
 
-a:hover {
-    text-decoration: underline;
+span.hint--bottom {
+    border-bottom: 0.1rem dashed #222;
 }
 
 table {
-    margin-top: 15px;
+    margin-top: 2.5rem;
 }
 
 th {
@@ -50,13 +50,14 @@ th.headerSortUp::after {
 
 #top {
     position: absolute;
-    top: 0px;
+    top: 0;
     width: 100%;
-    height: 80px;
+    height: 8rem;
     background-color: #050505;
     color: white;
-    line-height: 80px;
-    min-width: 600px;
+    line-height: 8rem;
+    min-width: 60rem;
+    font-size: 3em;
 }
 
 #top a {
@@ -65,22 +66,51 @@ th.headerSortUp::after {
 }
 
 #title {
-    font-size: 200%;
+    font-size: 1.8em;
 }
 
 #main {
-    margin-top: 100px;
+    margin-top: 11rem;
+    font-size: 2.8em;
 }
 
-#footer {
-    font-size: 80%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+#footer { /** Actually inside #main **/
+    font-size: 0.75em;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .box {
-    border: 1px solid #AAA;
-    padding: 10px;
+    border-left: 0.6rem solid black;
+    padding-left: 1.5rem;
     color: black;
-    margin: 5px;
+    font-size: 1.15em;
+}
+
+.box p {
+    margin: 0.5em 0 0 0;
+    line-height: 120%;
+}
+
+.rating {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+.rating-4 {
+    color: #666;
+}
+
+.rating-3 {
+    color: #D32F2F;
+}
+
+.rating-2 {
+    color: #F57C00;
+}
+
+.rating-1 {
+    color: #388E3C;
 }

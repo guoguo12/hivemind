@@ -13,10 +13,6 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
-
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
@@ -42,23 +38,22 @@
 
   <div class="container" id="main">
     <div class="row box">
-      This site provides up-to-date stats on the Berkeley EECS instructional computers, including user counts, load averages, and uptimes.
-      It currently tracks only the
-      <a href="http://inst.eecs.berkeley.edu/cgi-bin/clients.cgi?choice=330soda" target="_blank">Hive machines</a>;
-      support for other machines will be added soon.
-      <br>
-      <br>
+      <p>
+      This site provides up-to-date stats on the Berkeley EECS instructional computers.
+      </p>
+      <p>
       <span id="updated"></span>
       Updates occur <b>once every 10 minutes</b>.
+      </p>
     </div>
     <div class="row" >
       <table class="u-full-width tablesorter">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Users</th>
-            <th>Load-5 <sup><a href="#" class="hint--right" data-hint="Average CPU/IO utilization in past 5 minutes.">?</a></sup></th>
-            <th>Load-15 <sup><a href="#" class="hint--right" data-hint="Average CPU/IO utilization in past 15 minutes.">?</a></sup></th>
+            <th>Server name</th>
+            <th>Overall rating<sup><a href="#" class="hint--right" data-hint="Click 'View on GitHub' above for details on how this is calculated">?</a></sup></th>
+            <th>User count</th>
+            <th>CPU usage<sup><a href="#" class="hint--right" data-hint="Average CPU utilization over the past 5 minutes across all cores">?</a></sup></th>
             <th>Uptime</th>
           </tr>
         </thead>

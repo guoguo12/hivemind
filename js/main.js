@@ -1,7 +1,27 @@
 // MAIN.JS -- Hivemind
 // Allen Guo <allenguo@berkeley.edu>
 
-var DATA_URL = "https://hivemind-data.firebaseapp.com/latest.json";
+var DATA_URL = "http://hivemind-data.firebaseapp.com/latest.json";
+
+var RATING_TEXTS = {
+  1: "Low",
+  2: "Moderate",
+  3: "High",
+  4: "Unavailable"
+};
+
+function toRating(load, userCount) {
+  if (load >= 70 || userCount >= 30) {
+    var rating = 3;
+  } else if (load >= 30 || userCount >= 15) {
+    var rating = 2;
+  } else if (load >= 0 || userCount >= 0) {
+    var rating = 1;
+  } else {
+    var rating = 4;
+  }
+  return '<span class="rating rating-' + rating + '">&bull; ' + RATING_TEXTS[rating] + '</span>';
+}
 
 function toHumanDuration(seconds) {
   return moment.duration(seconds, 'seconds').humanize();
@@ -17,7 +37,7 @@ function toHumanUserCount(count) {
 function updateLastUpdated(lastUpdated) {
   var timeString = lastUpdated.format("h:mm A, L");
   var humanReadable = lastUpdated.fromNow();
-  $('#updated').html('The data below was gathered at <b>' + timeString + '</b> (' + humanReadable + ').');
+  $('#updated').html('The data below was gathered <b>' + humanReadable + '</b>.');
 }
 
 function update() {
@@ -36,24 +56,31 @@ function update() {
       var serverData = data.data[server];
       if (Object.keys(serverData).length === 0) {
         var items = [server,
-                     '&mdash;',
+                     toRating(-1, -1),
                      '&mdash;',
                      '&mdash;',
                      '&mdash;'];
       } else {
+        var userCount = serverData.users.length;
+        var load = parseFloat(serverData.load_avgs[2] * 100).toFixed(2) + '%';
+        if (userCount != 0) {
+          var userCountHtml = '<span class="hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(userCount) + '</span>';
+        } else {
+          var userCountHtml = toHumanUserCount(userCount);
+        }
         var items = [server,
-                     '<span class="hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(serverData.users.length) + '</span>',
-                     serverData.load_avgs[1],
-                     serverData.load_avgs[2],
+                     toRating(load, userCount),
+                     userCountHtml,
+                     load,
                      toHumanDuration(serverData.uptime)];
       }
       var html = '<tr><td>' + items.join('</td><td>') + '</td></tr>';
       $('#data-body').append(html);
     });
 
-    $('table').tablesorter({sortList: [[1,0]], headers: {0: { sorter: 'servers'},
-                                                         1: { sorter: 'users'  },
-                                                         2: { sorter: 'loads'  },
+    $('table').tablesorter({sortList: [[1,0], [3,0]], headers: {0: { sorter: 'servers'},
+                                                         1: { sorter: 'ratings'},
+                                                         2: { sorter: 'users'  },
                                                          3: { sorter: 'loads'  },
                                                          4: { sorter: 'uptimes'}}});
   });
@@ -73,6 +100,22 @@ function configParsers() {
     },
     type: 'text'
   });
+  $.tablesorter.addParser({ 
+    id: 'ratings', 
+    is: function(s) { 
+      return false; 
+    },
+    format: function(s) {
+      var ratingString = s.split(' ')[1];
+      for (var ratingNum in RATING_TEXTS) {
+        if (RATING_TEXTS[ratingNum] === ratingString) {
+          return ratingNum;
+        }
+      }
+      return 0;
+    },
+    type: 'numeric'
+  });  
   $.tablesorter.addParser({ 
     id: 'users', 
     is: function(s) { 
