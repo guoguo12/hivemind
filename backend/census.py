@@ -88,5 +88,4 @@ if __name__ == '__main__':
     pool.join()
 
     results['time_elapsed'] = time.time() - results['time_begin']
-    print json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))
-
+    print json.dumps(results, sort_keys=True)
