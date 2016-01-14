@@ -8,6 +8,25 @@ Every 10 minutes, `backend/census.py` is executed. It connects to each server in
 
 You can view the most recently generated JSON file here: [https://hivemind-data.firebaseapp.com/latest.json](https://hivemind-data.firebaseapp.com/latest.json).
 
+### Overall load formula
+
+The "overall load" heuristic is implemented in `toRating()` in `main.js`:
+
+```javascript
+// load is CPU usage as a percentage
+// userCount is the number of users
+
+if (load >= 70 || userCount >= 30) {
+var rating = 3; // High
+} else if (load >= 30 || userCount >= 15) {
+var rating = 2; // Moderate
+} else if (load >= 0 || userCount >= 0) {
+var rating = 1; // Low
+} else {
+var rating = 4; // Unavailable
+}
+```
+
 ## How to contribute
 
 Want to host the website locally? Clone this repo, switch to the `gh-pages` branch, and start a web server in the project root directory.
@@ -24,6 +43,14 @@ The backend (i.e. the script that grabs data from the servers) is a little harde
 You should then be able to execute `census.py` to grab data from each server in `servers.txt`.
 The results are printed to stdout.
 
+## Dataset
+
+Usage stats for the [Hive servers](https://inst.eecs.berkeley.edu/cgi-bin/clients.cgi?choice=330soda),
+collected between 11/14/2015 and 12/21/2015 at approximately 10 minute intervals,
+are available as a educational dataset (5,252 files, ~50 MB uncompressed).
+
+Contact Allen at allenguo@berkeley.edu for details.
+
 ## Credits
 
-Hivemind was made using jQuery (with the Tablesorter plugin), Moment.js, Skeleton, and Hint.css.
+Hivemind was made using jQuery (with the Tablesorter plugin), Moment.js, Skeleton, clipboard.js, and Hint.css.
