@@ -39,6 +39,7 @@ function updateLastUpdated(lastUpdated) {
   var timeString = lastUpdated.format("h:mm A, L");
   var humanReadable = lastUpdated.fromNow();
   $('#updated').html('The data below was gathered <b>' + humanReadable + '</b>.');
+  $('#loading').html('Refresh to check for updates.');
 }
 
 function update() {
@@ -48,7 +49,9 @@ function update() {
     var lastUpdate = moment.unix(data.time_begin + data.time_elapsed);
     updateLastUpdated(lastUpdate);
 
-    // data.data holds the data for the servers  
+    var totalLoad = 0;
+    var totalLoadCount = 0;
+    // data.data holds the data for the servers
     Object.keys(data.data).forEach(function(server) {
       if (server === '') {
         return;
@@ -63,12 +66,14 @@ function update() {
       } else {
         var userCount = serverData.users.length;
         var load = serverData.load_avgs[1] * 100;
+        totalLoad += load;
+        totalLoadCount++;
         var loadString = parseFloat(load).toFixed(2) + '%';
         if (userCount > 8) {
           var userList = serverData.users.slice(0, 8).join(', ') + ', and ' + (userCount - 8) + ' more';
-          var userCountHtml = '<span class="hint--bottom" data-hint="' + userList + '">' + toHumanUserCount(userCount) + '</span>';
+          var userCountHtml = '<span class="dashed hint--bottom" data-hint="' + userList + '">' + toHumanUserCount(userCount) + '</span>';
         } else if (userCount > 0) {
-          var userCountHtml = '<span class="hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(userCount) + '</span>';
+          var userCountHtml = '<span class="dashed hint--bottom" data-hint="' + serverData.users.join(', ') + '">' + toHumanUserCount(userCount) + '</span>';
         } else {
           var userCountHtml = toHumanUserCount(userCount);
         }
@@ -85,7 +90,30 @@ function update() {
                                                          1: { sorter: 'ratings'},
                                                          2: { sorter: 'users'  },
                                                          3: { sorter: 'loads'  }}});
+    $('table').removeClass('hidden');
+    updateQuickStatsBox(totalLoad / totalLoadCount);
+  }).fail(function() {
+    $('#loading')
+      .html('Couldn\'t retrieve Hivemind data file. Try again later?')
+      .css('color', '#D32F2F');
   });
+}
+
+function updateQuickStatsBox(avgLoad) {
+  $('#average').html(parseFloat(avgLoad).toFixed(2) + '%');
+  
+  var bestServer = $('table td').html() + '.cs.berkeley.edu';
+  $('#best').html(bestServer).attr('data-clipboard-text', bestServer);
+  var clipboard = new Clipboard('#best');
+  clipboard.on('success', function(e) {
+    $('#best').attr('data-hint', 'Copied!');
+    setTimeout(function() { $('#best').attr('data-hint', 'Click to copy'); }, 1000);
+  });
+  clipboard.on('error', function(e) {
+    $('#best').attr('data-hint', 'Failed (browser unsupported)');
+  });
+
+  $('#stats').removeClass('hidden');
 }
 
 function configParsers() {

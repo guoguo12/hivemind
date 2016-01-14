@@ -37,25 +37,33 @@
   </div>
 
   <div class="container" id="main">
-    <div class="row box warning">
+    <div class="row box warning hidden">
       <p>
       Hivemind is currently not being updated. Operations will resume in mid-January.
       </p>
       <p>
       The sample data below is from 4:40 PM on 11/18/2015.
       </p>      
-    </div>  
-    <div class="row box hidden">
+    </div>
+    <div class="row box">
       <p>
-      This site provides up-to-date stats on the Berkeley EECS instructional computers.
+      This site displays usage stats for the Berkeley EECS instructional computers.
       </p>
       <p>
-      <span id="updated"></span>
-      Updates occur <b>once every 10 minutes</b>.
+      <span id="updated"></span> <span id="loading">Loading latest data...</span>
       </p>
     </div>
+    <div class="row box info hidden" id="stats">
+      <p class="hidden">
+      The average CPU usage across all servers is <b id="average"></b>.
+      </p>
+      <p>
+      The least-busy server is <a href="#" id="best" class="dashed hint--bottom" data-hint="Click to copy"></a>.
+      </p>
+    </div>
+
     <div class="row" >
-      <table class="u-full-width tablesorter">
+      <table class="u-full-width tablesorter hidden">
         <thead>
           <tr>
             <th>Server name</th>
@@ -80,6 +88,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/jquery.tablesorter.min.js"></script>
   <script src="js/moment.js"></script>
+  <script src="js/clipboard.min.js"></script>
   <script src="js/main.js"></script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

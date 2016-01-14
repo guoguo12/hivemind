@@ -4,7 +4,7 @@
  */
 
 html, body {
-    background-color: #F9F9F9;
+    background-color: #FCFCFC;
     color: black;
     font-size: 62.5%;
     min-width: 600px;
@@ -16,7 +16,7 @@ html, body {
 }
 
 a, a:hover {
-    color: black;
+    color: inherit;
 }
 
 a {
@@ -24,7 +24,7 @@ a {
     font-weight: bold;
 }
 
-span.hint--bottom {
+.dashed.hint--bottom {
     border-bottom: 0.1rem dashed #222;
 }
 
@@ -95,6 +95,11 @@ th.headerSortUp::after {
 .box.warning {
     border-left-color: #D32F2F;
     color: #D32F2F;
+}
+
+.box.info {
+    border-left-color: #1A237E;
+    color: #1A237E;
 }
 
 .box p {
