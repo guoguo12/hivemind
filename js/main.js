@@ -59,7 +59,6 @@ function update() {
         var items = [server,
                      toRating(-1, -1),
                      '&mdash;',
-                     '&mdash;',
                      '&mdash;'];
       } else {
         var userCount = serverData.users.length;
@@ -76,8 +75,7 @@ function update() {
         var items = [server,
                      toRating(load, userCount),
                      userCountHtml,
-                     loadString,
-                     toHumanDuration(serverData.uptime)];
+                     loadString];
       }
       var html = '<tr><td>' + items.join('</td><td>') + '</td></tr>';
       $('#data-body').append(html);
@@ -86,8 +84,7 @@ function update() {
     $('table').tablesorter({sortList: [[1,0], [3,0]], headers: {0: { sorter: 'servers'},
                                                          1: { sorter: 'ratings'},
                                                          2: { sorter: 'users'  },
-                                                         3: { sorter: 'loads'  },
-                                                         4: { sorter: 'uptimes'}}});
+                                                         3: { sorter: 'loads'  }}});
   });
 }
 
