@@ -4,28 +4,13 @@
 
 ## How does it work?
 
-Every 10 minutes, `backend/census.py` is executed. It connects to each server in `server.txt` via SSH and collects information. The results from all of the servers are combined into a single JSON file (`data/latest.json`), which is then uploaded to [Firebase Hosting](https://www.firebase.com/hosting.html).
+Every 10 minutes, `backend/census.py` is executed. It connects to each server listed in `backend/server.txt` via SSH and collects information. The results from all of the servers are combined into a single JSON file (`data/latest.json`), which is then uploaded to [Firebase Hosting](https://www.firebase.com/hosting.html).
 
 You can view the most recently generated JSON file here: [https://hivemind-data.firebaseapp.com/latest.json](https://hivemind-data.firebaseapp.com/latest.json).
 
 ### Overall load formula
 
-The "overall load" heuristic is implemented in `toRating()` in `main.js`:
-
-```javascript
-// load is CPU usage as a percentage
-// userCount is the number of users
-
-if (load >= 70 || userCount >= 30) {
-var rating = 3; // High
-} else if (load >= 30 || userCount >= 15) {
-var rating = 2; // Moderate
-} else if (load >= 0 || userCount >= 0) {
-var rating = 1; // Low
-} else {
-var rating = 4; // Unavailable
-}
-```
+The "overall load" heuristic is implemented in `toRating()` in [`main.js`](https://github.com/guoguo12/hivemind/blob/gh-pages/js/main.js).
 
 ## How to contribute
 
@@ -47,9 +32,9 @@ The results are printed to stdout.
 
 Usage stats for the [Hive servers](https://inst.eecs.berkeley.edu/cgi-bin/clients.cgi?choice=330soda),
 collected between 11/14/2015 and 12/21/2015 at approximately 10 minute intervals,
-are available as a educational dataset (5,252 files, ~50 MB uncompressed).
+are available as a educational dataset. There are a total of 5,252 JSON files (~50 MB uncompressed, 7.4 MB zipped).
 
-Contact Allen at allenguo@berkeley.edu for details.
+For details, contact the author.
 
 ## Credits
 

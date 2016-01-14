@@ -11,15 +11,17 @@ var RATING_TEXTS = {
   4: "Unavailable"
 };
 
+// load is CPU usage as a percentage
+// userCount is the number of users
 function toRating(load, userCount) {
   if (load >= 70 || userCount >= 30) {
-    var rating = 3;
+    var rating = 3; // High
   } else if (load >= 30 || userCount >= 15) {
-    var rating = 2;
+    var rating = 2; // Moderate
   } else if (load >= 0 || userCount >= 0) {
-    var rating = 1;
+    var rating = 1; // Low
   } else {
-    var rating = 4;
+    var rating = 4; // Unavailable
   }
   return '<span class="rating rating-' + rating + '">&#9679; ' + RATING_TEXTS[rating] + '</span>';
 }
