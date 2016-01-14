@@ -87,9 +87,9 @@ function update() {
     });
 
     $('table').tablesorter({sortList: [[1,0], [3,0]], headers: {0: { sorter: 'servers'},
-                                                         1: { sorter: 'ratings'},
-                                                         2: { sorter: 'users'  },
-                                                         3: { sorter: 'loads'  }}});
+                                                                1: { sorter: 'ratings'},
+                                                                2: { sorter: 'users'  },
+                                                                3: { sorter: 'loads'  }}});
     $('table').removeClass('hidden');
     updateQuickStatsBox(totalLoad / totalLoadCount);
   }).fail(function() {
@@ -100,20 +100,29 @@ function update() {
 }
 
 function updateQuickStatsBox(avgLoad) {
-  $('#average').html(parseFloat(avgLoad).toFixed(2) + '%');
-  
   var bestServer = $('table td').html() + '.cs.berkeley.edu';
-  $('#best').html(bestServer).attr('data-clipboard-text', bestServer);
-  var clipboard = new Clipboard('#best');
-  clipboard.on('success', function(e) {
-    $('#best').attr('data-hint', 'Copied!');
-    setTimeout(function() { $('#best').attr('data-hint', 'Click to copy'); }, 1000);
-  });
-  clipboard.on('error', function(e) {
-    $('#best').attr('data-hint', 'Failed (browser unsupported)');
-  });
+  activateClipboard(bestServer, '#best');
+  $('#best').html(bestServer);
 
   $('#stats').removeClass('hidden');
+}
+
+function activateClipboard(copyText, sel) {
+  var clipboard = new Clipboard(sel);
+  $(sel)
+    .attr('data-clipboard-text', copyText)
+    .addClass('dashed hint--bottom')
+    .attr('data-hint', 'Click to copy');
+
+  clipboard.on('success', function(e) {
+    $(sel).attr('data-hint', 'Copied!');
+    setTimeout(function() {
+      $(sel).attr('data-hint', 'Click to copy');
+    }, 1000); // 1 second
+  });
+  clipboard.on('error', function(e) {
+    $(sel).attr('data-hint', 'Failed (browser unsupported)');
+  });
 }
 
 function configParsers() {
@@ -173,26 +182,11 @@ function configParsers() {
     },
     type: 'numeric'
   });
-  $.tablesorter.addParser({ 
-    id: 'uptimes', 
-    is: function(s) { 
-      return false; 
-    },
-    format: function(s) {
-      if (s.indexOf('—') !== -1) {
-        return Infinity;
-      }
-      var chunks = s.split(' ');
-      return moment.duration(parseInt(chunks[0] === 'a' ? 1 : chunks[0]), chunks[1]).asMilliseconds();
-    },
-    type: 'numeric'
-  });   
 }
 
 function main() {
   configParsers();
   update();
-//  setTimeout(function() { location.reload(); }, 1000 * 60); // Refresh every minute
 }
 
 $(main);
