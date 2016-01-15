@@ -136,7 +136,7 @@ function configParsers() {
       return false; 
     },
     format: function(s) { 
-      if (s.match(/.*?[a-z]\d$/i)) { // Only one digit at end, e.g. hive1
+      if (s.match(/.*?[a-z]|\-\d$/i)) { // Only one digit at end, e.g. hive1
         return s.slice(0, -1) + '0' + s.slice(-1);
       }
       return s;
