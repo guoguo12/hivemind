@@ -80,6 +80,10 @@ th.headerSortUp::after {
     padding-bottom: 2rem;
 }
 
+.click {
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }

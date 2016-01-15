@@ -61,9 +61,10 @@ function update() {
         return;
       }
 
+      var serverHtml = '<span>' + server + '</span>';
       var serverData = data.data[server];
       if (Object.keys(serverData).length === 0) {
-        var items = [server,
+        var items = [serverHtml,
                      toRating(-1, -1),
                      '&mdash;',
                      '&mdash;'];
@@ -81,7 +82,7 @@ function update() {
         } else {
           var userCountHtml = toHumanUserCount(userCount);
         }
-        var items = [server,
+        var items = [serverHtml,
                      toRating(load, userCount),
                      userCountHtml,
                      loadString];
@@ -96,6 +97,7 @@ function update() {
                                                                 3: { sorter: 'loads'  }}});
     $('table').removeClass('hidden');
     updateQuickStatsBox(totalLoad / totalLoadCount);
+    addAllClipboards();
   }).fail(function() {
     $('#loading')
       .html('Couldn\'t retrieve Hivemind data file. Try again later?')
@@ -104,11 +106,16 @@ function update() {
 }
 
 function updateQuickStatsBox(avgLoad) {
-  var bestServer = $('table td').html() + '.cs.berkeley.edu';
+  var bestServer = $('table td span').html() + '.cs.berkeley.edu';
   activateClipboard(bestServer, '#best');
   $('#best').html(bestServer);
-
   $('#stats').removeClass('hidden');
+}
+
+function addAllClipboards() {
+  $('tr td:first-child span').each(function(i, elem) {
+    activateClipboard(elem.innerHTML + '.cs.berkeley.edu', elem);
+  });
 }
 
 function activateClipboard(copyText, sel) {
@@ -116,12 +123,13 @@ function activateClipboard(copyText, sel) {
   $(sel)
     .attr('data-clipboard-text', copyText)
     .addClass('dashed hint--bottom')
-    .attr('data-hint', 'Click to copy');
+    .addClass('click')
+    .attr('data-hint', 'Click to copy address');
 
   clipboard.on('success', function(e) {
     $(sel).attr('data-hint', 'Copied!');
     setTimeout(function() {
-      $(sel).attr('data-hint', 'Click to copy');
+      $(sel).attr('data-hint', 'Click to copy address');
     }, 1000); // 1 second
   });
   clipboard.on('error', function(e) {
