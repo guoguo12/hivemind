@@ -63,7 +63,7 @@ if __name__ == '__main__':
     """Reads list of servers, then grabs data from each one. Prints the combined
     data in JSON format to stdout and writes a log to LOG_PATH."""
     logging.basicConfig(filename=LOG_PATH, level=LOG_LEVEL)
-    results = {'time_begin': time.time(), 'elapsed': {}, 'data': {}}
+    results = {'time_begin': time.time(), 'data': {}}
 
     def task(server):
         try:
@@ -76,7 +76,6 @@ if __name__ == '__main__':
             if result != None:
                 server_data, server_elapsed = result
                 results['data'][server] = server_data
-                results['elapsed'][server] = server_elapsed
             else:
                 results['data'][server] = {}
 
