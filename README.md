@@ -1,6 +1,6 @@
 # Hivemind
 
-**Hivemind** provides usage stats for the Berkeley EECS instructional computers.
+**Hivemind** displays usage stats for the Berkeley EECS instructional computers.
 
 ## How does it work?
 
