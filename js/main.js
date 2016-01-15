@@ -2,7 +2,7 @@
 // Allen Guo <allenguo@berkeley.edu>
 
 // var DATA_URL = "test.json";
-var DATA_URL = "http://hivemind-data.firebaseapp.com/latest.json";
+var DATA_URL = "https://hivemind-data.firebaseapp.com/latest.json";
 
 var RATING_TEXTS = {
   1: "Low",
@@ -46,7 +46,9 @@ function updateLastUpdated(lastUpdated) {
 
 function update() {
   $.getJSON(DATA_URL, function(data) {
-    $('#data-body').html('')
+    console.log('Generation time: ' + data.time_elapsed + 's');
+
+    $('#data-body').html('');
 
     var lastUpdate = moment.unix(data.time_begin + data.time_elapsed);
     updateLastUpdated(lastUpdate);
