@@ -60,13 +60,21 @@ th.headerSortUp::after {
     font-size: 3em;
 }
 
-#top a {
+@media screen and (min-device-width: 1200px) {
+    #top {
+        position: fixed;
+        z-index: 1;
+    }
+}
+
+#top #gh-link {
     color: white;
     float: right;
 }
 
 #title {
     font-size: 1.8em;
+    font-weight: normal;
 }
 
 #main {
