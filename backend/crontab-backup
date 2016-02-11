@@ -1,4 +1,4 @@
-*/10 * * * * bash -c 'cd ~/hivemind/backend && ~/hivemind/backend/run_census > ~/latest-hivemind-output'
+*/5 * * * * bash -c 'cd ~/hivemind/backend && ~/hivemind/backend/run_census > ~/latest-hivemind-output'
 
 # Edit this file to introduce tasks to be run by cron.
 # 
