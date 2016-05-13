@@ -1,8 +1,8 @@
 // MAIN.JS -- Hivemind
 // Allen Guo <allenguo@berkeley.edu>
 
-// var DATA_URL = "test.json";
-var DATA_URL = "https://hivemind-data.firebaseapp.com/latest.json";
+var DATA_URL = "test.json";
+// var DATA_URL = "https://hivemind-data.firebaseapp.com/latest.json";
 
 var RATING_TEXTS = {
   1: "Low",
