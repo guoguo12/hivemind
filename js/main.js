@@ -106,9 +106,14 @@ function update() {
 }
 
 function updateQuickStatsBox(avgLoad) {
+  var bestHiveServer = $('table td span').filter(function(i, e) { return e.innerText.indexOf('hive') !== -1; }).html() + '.cs.berkeley.edu';
+  activateClipboard(bestHiveServer, '#best-hive');
+  $('#best-hive').html(bestHiveServer);
+
   var bestServer = $('table td span').html() + '.cs.berkeley.edu';
   activateClipboard(bestServer, '#best');
   $('#best').html(bestServer);
+
   $('#stats').removeClass('hidden');
 }
 
