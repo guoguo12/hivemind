@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-source ~/.bashrc  # Sets $FIREBASE_TOKEN
-
 TIME=`date +%s`
 python census.py > ../data/historical/$TIME.json
 
 cp ../data/historical/$TIME.json ../data/latest.json
-timeout 100 /usr/local/bin/firebase deploy --non-interactive --debug --token "$FIREBASE_TOKEN"
+timeout 100 /usr/local/bin/firebase deploy --non-interactive --debug
 echo $?
 
