@@ -204,3 +204,10 @@ raspi21.cs
 raspi22.cs
 raspi23.cs
 raspi24.cs
+hpse-9.eecs
+hpse-10.eecs
+hpse-11.eecs
+hpse-12.eecs
+hpse-13.eecs
+hpse-14.eecs
+hpse-15.eecs
