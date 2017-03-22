@@ -38,4 +38,4 @@ For details, contact the author.
 
 ## Credits
 
-Hivemind was made using jQuery (with the Tablesorter plugin), Moment.js, Skeleton, clipboard.js, and Hint.css.
+Hivemind was made using jQuery, Vue.js, Moment.js, Skeleton, clipboard.js, and Hint.css.
