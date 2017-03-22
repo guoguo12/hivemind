@@ -36,71 +36,81 @@
     </div>
   </div>
 
-  <div class="container" id="main">
-    <div class="row box warning hidden">
-      <p>
-      Hivemind is currently not being updated. Operations will resume in mid-January.
-      </p>
-      <p>
-      The sample data below is from 4:40 PM on 11/18/2015.
-      </p>      
+  <div class="container" id="main" v-cloak>
+    <div class="row box warning" v-if="offline">
+      <p>Hivemind is currently not being updated. Operations will resume in mid-January.</p>
+      <p>The sample data below is from 4:40 PM on 11/18/2015.</p>
     </div>
-    <div class="row box">
-      <p>
-      This site displays usage stats for the Berkeley EECS instructional computers.
+    <div class="row box" v-else>
+      <p>This site displays usage stats for the Berkeley EECS instructional computers.</p>
+      <p v-if="dataLoaded">
+        The data below was gathered <b>{{ lastUpdate | timeSince }}</b>. Refresh to check for updates.
       </p>
-      <p>
-      <span id="updated"></span> <span id="loading">Loading latest data...</span>
+      <p v-else>
+        Loading latest data...
       </p>
     </div>
-    <div class="row box info hidden" id="stats">
-      <p class="hidden">
-      The average CPU usage across all servers is <b id="average"></b>.
-      </p>
-      <p>
-      The least-busy Hive server is <a href="javascript:void(0)" id="best-hive" tabindex=1></a>.
-      </p>
-      <p class="hidden">
-      The least-busy server overall is <a href="javascript:void(0)" id="best" tabindex=2></a>.
-      </p>
+    <div class="row box warning" v-if="failed">
+      <p>Couldn't retrieve latest data. Try again later?</p>
+      <p>If the issue persists, please email the author at <a href="mailto:guoguo12@gmail.com">guoguo12@gmail.com</a>.</p>
     </div>
 
-    <div class="row" >
-      <table class="u-full-width tablesorter hidden">
+    <div class="row" v-if="dataLoaded">
+      <input v-model="search" class="form-control u-full-width" placeholder="Regex filter by name" tabindex=1 />
+      <table class="u-full-width tablesorter">
         <thead>
           <tr>
-            <th>Server name</th>
-            <th>Overall load<sup><a href="#" class="hint--right" data-hint="Click 'View on GitHub' above for details on how this is calculated">?</a></sup></th>
-            <th>User count</th>
-            <th>CPU usage<sup><a href="#" class="hint--right" data-hint="Average CPU utilization over the past 5 minutes across all cores">?</a></sup></th>
+            <th @click="headerClick('sortName')" :class="headerClass('sortName')">Server name</th>
+            <th @click="headerClick('rating')" :class="headerClass('rating')">Overall load<sup><a href="#" class="hint--right" data-hint="Click 'View on GitHub' above for details on how this is calculated">?</a></sup></th>
+            <th @click="headerClick('userCount')" :class="headerClass('userCount')">User count</th>
+            <th @click="headerClick('usage')" :class="headerClass('usage')">CPU usage<sup><a href="#" class="hint--right" data-hint="Average CPU utilization over the past 5 minutes across all cores">?</a></sup></th>
           </tr>
         </thead>
-        <tbody id="data-body">
+        <tbody>
+          <tr v-for="server in filteredServers" :key="server.name">
+            <td>
+              <span class="dashed hint--bottom click" data-hint="Click to copy address" :data-clipboard-text="server.name + '.berkeley.edu'">
+                {{ server.shortName }}
+              </span>
+            </td>
+            <td>
+              <span class="rating" :class="'rating-' + server.rating">&#9679; {{ server.rating | ratingText }}</span>
+            </td>
+            <td v-if="server.available">
+              <span :class="{ 'dashed hint--bottom' : server.users.length }" :data-hint="server.users | userList">
+                {{ server.userCount | userCount }}
+              </span>
+            </td>
+            <td v-else>&mdash;</td>
+            <td v-if="server.available">{{ server.usage | percent }}%</td>
+            <td v-else>&mdash;</td>
+          </tr>
         </tbody>
-      </table>      
+      </table>
     </div>
-    <div id="footer">
-    This site was developed with the support of the EECS Instructional Support Group, but is independently student-operated.
-    <br>
-    This site uses Google Analytics to better understand user behavior. Learn more or opt out <a href="https://support.google.com/analytics/answer/6004245" target="_blank">here</a>.
+
+    <div id="footer" v-if="dataLoaded">
+      This site was developed with the support of the EECS Instructional Support Group, but is independently student-operated.
+      <br>
+      This site uses Google Analytics to better understand user behavior. Learn more or opt out <a href="https://support.google.com/analytics/answer/6004245" target="_blank">here</a>.
     </div>
   </div>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="js/jquery.js"></script>
-  <script src="js/jquery.tablesorter.min.js"></script>
+  <script src="js/vue.min.js"></script>
   <script src="js/moment.js"></script>
   <script src="js/clipboard.min.js"></script>
   <script src="js/main.js"></script>
   <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-43676088-3', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-43676088-3', 'auto');
+    ga('send', 'pageview');
   </script>
 </body>
 </html>

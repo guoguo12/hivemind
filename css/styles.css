@@ -15,6 +15,18 @@ html, body {
     font-family: "Helvetica", "Open Sans", sans-serif;
 }
 
+::selection {
+    background: yellow;
+}
+
+::-moz-selection {
+    background: yellow;
+}
+
+[v-cloak] {
+    display: none;
+}
+
 a, a:hover {
     color: inherit;
 }
@@ -28,8 +40,15 @@ a {
     border-bottom: 0.1rem dashed #222;
 }
 
-table {
+input {
     margin-top: 2.5rem;
+    border: none;
+    border-bottom: 0.1rem solid #AAA;
+    outline: none;
+}
+
+input:focus {
+    border-bottom: 0.1rem solid #222;
 }
 
 th {
@@ -126,18 +145,18 @@ th.headerSortUp::after {
     letter-spacing: 0.05em;
 }
 
-.rating-4 {
+.rating-3 {
     color: #666;
 }
 
-.rating-3 {
+.rating-2 {
     color: #D32F2F;
 }
 
-.rating-2 {
+.rating-1 {
     color: #F57C00;
 }
 
-.rating-1 {
+.rating-0 {
     color: #388E3C;
 }
