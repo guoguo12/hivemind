@@ -127,7 +127,7 @@ var app = new Vue({
         return this.reversedServers;
       }
       return this.reversedServers.filter(function(server) {
-        return server.name.match(search);
+        return server.shortName.match(search);
       });
     }
   },
