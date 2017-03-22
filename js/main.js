@@ -61,7 +61,8 @@ function update() {
         return;
       }
 
-      var serverHtml = '<span>' + server + '</span>';
+      var displayName = server.split('.')[0];
+      var serverHtml = '<span data-full-name="' + server + '">' + displayName + '</span>';
       var serverData = data.data[server];
       if (Object.keys(serverData).length === 0) {
         var items = [serverHtml,
@@ -106,11 +107,11 @@ function update() {
 }
 
 function updateQuickStatsBox(avgLoad) {
-  var bestHiveServer = $('table td span').filter(function(i, e) { return e.innerText.indexOf('hive') !== -1; }).html() + '.cs.berkeley.edu';
+  var bestHiveServer = $('table td span').filter(function(i, e) { return e.innerText.indexOf('hive') !== -1; }).attr('data-full-name') + '.berkeley.edu';
   activateClipboard(bestHiveServer, '#best-hive');
   $('#best-hive').html(bestHiveServer);
 
-  var bestServer = $('table td span').html() + '.cs.berkeley.edu';
+  var bestServer = $('table td span').html() + '.berkeley.edu';
   activateClipboard(bestServer, '#best');
   $('#best').html(bestServer);
 
@@ -119,7 +120,7 @@ function updateQuickStatsBox(avgLoad) {
 
 function addAllClipboards() {
   $('tr td:first-child span').each(function(i, elem) {
-    activateClipboard(elem.innerHTML + '.cs.berkeley.edu', elem);
+    activateClipboard($(elem).attr('data-full-name') + '.berkeley.edu', elem);
   });
 }
 
