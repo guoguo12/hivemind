@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export FIREBASE_TOKEN=""
+
 TIME=`date +%s`
 python census.py > ../data/historical/$TIME.json
 
