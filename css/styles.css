@@ -45,6 +45,7 @@ input {
     border: none;
     border-bottom: 0.1rem solid #AAA;
     outline: none;
+    background-color: transparent;
 }
 
 input:focus {
