@@ -1,6 +1,6 @@
 var DATA_URL = 'https://hivemind-data.firebaseapp.com/latest.json';
 
-var OFFLINE = false;
+var OFFLINE = true;
 
 var RATING_TEXTS = ['Low', 'Moderate', 'High', 'Unavailable'];
 
@@ -85,6 +85,9 @@ var app = new Vue({
     reverse: false
   },
   filters: {
+    formatTime: function(time) {
+      return moment.unix(time).format('h:mm a, MMMM Do, YYYY');
+    },
     timeSince: function(time) {
       return moment.unix(time).fromNow();
     },

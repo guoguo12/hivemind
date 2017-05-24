@@ -37,9 +37,9 @@
   </div>
 
   <div class="container" id="main" v-cloak>
-    <div class="row box warning" v-if="offline">
-      <p>Hivemind is currently not being updated. Operations will resume in mid-January.</p>
-      <p>The sample data below is from 4:40 PM on 11/18/2015.</p>
+    <div class="row box warning" v-if="offline && dataLoaded">
+      <p>Hivemind is currently not being updated. Operations will resume in August 2017.</p>
+      <p>The data below is from <b>{{ lastUpdate | formatTime }}</b>.</p>
     </div>
     <div class="row box" v-else>
       <p>This site displays usage stats for the Berkeley EECS instructional computers.</p>
