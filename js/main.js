@@ -1,6 +1,6 @@
 var DATA_URL = 'https://hivemind-data.firebaseapp.com/latest.json';
 
-var OFFLINE = true;
+var OFFLINE = false;
 
 var RATING_TEXTS = ['Low', 'Moderate', 'High', 'Unavailable'];
 
