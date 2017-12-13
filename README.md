@@ -28,14 +28,6 @@ The backend (i.e. the script that grabs data from the servers) is a little harde
 You should then be able to execute `census.py` to grab data from each server in `servers.txt`.
 The results are printed to stdout.
 
-## Dataset
-
-Usage stats for the [Hive servers](https://inst.eecs.berkeley.edu/cgi-bin/clients.cgi?choice=330soda),
-collected between 11/14/2015 and 12/21/2015 at approximately 10 minute intervals,
-are available as a educational dataset. There are a total of 5,252 JSON files (~50 MB uncompressed, 7.4 MB zipped).
-
-For details, contact the author.
-
 ## Credits
 
 Hivemind was made using jQuery, Vue.js, Moment.js, Skeleton, clipboard.js, and Hint.css.
