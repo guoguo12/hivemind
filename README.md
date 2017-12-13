@@ -4,9 +4,9 @@
 
 ## How does it work?
 
-Every five minutes, `backend/census.py` is executed. It connects to each server listed in `backend/server.txt` via SSH and collects information. The results from all of the servers are combined into a single JSON file (`data/latest.json`), which is then uploaded to [Firebase Hosting](https://www.firebase.com/hosting.html).
+Every five minutes, `backend/census.py` is executed. It connects to each server listed in `backend/server.txt` via SSH and collects information. The results from all of the servers are combined into a single JSON file (`data/latest.json`), which is hosted on my VPS.
 
-You can view the most recently generated JSON file here: [https://hivemind-data.firebaseapp.com/latest.json](https://hivemind-data.firebaseapp.com/latest.json).
+You can view the most recently generated JSON file here: [https://labs.aguo.us/hivemind/data/latest.json](https://labs.aguo.us/hivemind/data/latest.json).
 
 ### Overall load formula
 

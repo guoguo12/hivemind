@@ -1,4 +1,4 @@
-var DATA_URL = 'https://hivemind-data.firebaseapp.com/latest.json';
+var DATA_URL = 'https://labs.aguo.us/hivemind/data/latest.json';
 
 var OFFLINE = false;
 
