@@ -4,7 +4,7 @@
 
 import json
 import logging
-import multiprocessing
+import multiprocessing.dummy
 import time
 
 import pysftp
@@ -20,7 +20,7 @@ LOG_LEVEL = logging.INFO
 EXEC_CMD = 'cat /proc/{uptime,loadavg} && who -q && cat /proc/cpuinfo | grep "model name" | wc -l'
 EXPECTED_OUTPUT_LINES = 5
 
-PROCESS_COUNT = 8
+THREAD_COUNT = 8
 
 
 def read_servers(list_path=SERVER_LIST):
@@ -80,7 +80,7 @@ if __name__ == '__main__':
                 results['data'][server] = {}
 
     servers = read_servers()
-    pool = multiprocessing.Pool(PROCESS_COUNT)
+    pool = multiprocessing.dummy.Pool(THREAD_COUNT)
 
     pool.map_async(task, servers, callback=callback)
     pool.close()
